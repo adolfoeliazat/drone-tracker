@@ -13,8 +13,6 @@ spath.append('/home/foresterd/drfpy/plotting')
 import show_plots
 spath.append('/home/foresterd/drfpy/grave_IO')
 import read_grave as rg
-spath.append('/home/foresterd/drfpy/bad_pixels')
-import get_superPix_locs as gspl
 
 import pickle
 import numpy as np
@@ -40,7 +38,6 @@ ylst = [248,238,251,283,286,305,405,448,117,398,348]
 xlst = [197,301,309,309,425,432,377,587,497,239,63]
 badPixels = (np.array(ylst, dtype=np.uint16), # y (rows)
              np.array(xlst, dtype=np.uint16)) # x (cols)
-badSuperPix = gspl.get_superPix_locs(badPixels)
 #------------------------------------------------------------------------------
 
 if showPlots:
@@ -59,7 +56,7 @@ iframeList = [ii for ii in range(len(frameList)) if ii%nskip==0] # skip every ns
 icount = 0
 for iframe in iframeList[:-1]:
     Img = frameList[iframe].copy()
-    Img[badSuperPix] = np.mean(Img) # zero-out the 4-block bad super-pixel
+    Img[badPixels] = np.mean(Img) # zero-out the 4-block bad super-pixel
     #if showPlots: show_plots.showPlot(Img, iframe, ax, wait=True)
     print('frame '+str(icount))
 
