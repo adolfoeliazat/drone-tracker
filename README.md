@@ -1,5 +1,5 @@
 # drone-tracker
-tracks a drone flying low against the treeline using method of cross-correlation to find the shift between successive images in video from a hand-held infrared camera
+Tracks a drone flying low against the treeline using method of cross-correlation to find the shift between successive images in video from a hand-held infrared camera. This method works well when the target is flying smoothly against a complex background.  
 
 ![Alt text](drone.2.gif?raw=true "Output")
 
